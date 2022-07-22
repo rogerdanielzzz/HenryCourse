@@ -27,6 +27,16 @@ var c = function(a, b, c) {
 c(8,9,10);
 console.log(b);
 console.log(x);
+
+/* 10
+8
+8
+9
+10
+1
+*/
+
+
 ```
 
 ```javascript
@@ -36,6 +46,14 @@ foo();
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
+
+/*
+undefined
+error
+Hola!
+
+*/
+
 ```
 
 ```javascript
@@ -44,7 +62,15 @@ if(true) {
     var instructor = "Franco";
 }
 console.log(instructor);
+/*
+Franco
+
+*/
+
+
 ```
+
+
 
 ```javascript
 var instructor = "Tony";
@@ -56,6 +82,14 @@ console.log(instructor);
    }
 })();
 console.log(instructor);
+/*
+Tony
+Franco
+Tony
+
+*/
+
+
 ```
 
 ```javascript
@@ -69,28 +103,41 @@ if (true) {
 }
 console.log(instructor);
 console.log(pm);
+/*
+The Flash
+Reverse Flash
+The flash
+Franco
+
+Porque usa Var que cambia el valor global 
+
+
+*/
+
+
+
 ```
 ### Coerción de Datos
 
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+6 / "3" //2
+"2" * "3" // 6 
+4 + 5 + "px"//9px
+"$" + 4 + 5//$45 porque conviernte todos en string
+"4" - 2 //2
+"4px" - 2 //nAn
+7 / 0 // error (Infinity)
+{}[0] // ???
+parseInt("09") // 9
+5 && 2 // 2
+2 && 5 // 5
+5 || 0 // 5
+0 || 5// 5 porque el 0 es false or devuelve el primer verdadero y && el ultimo verdader3
+[3]+[3]-[10] // lo resuelve concatenendo como string 33-10 = 23
+3>2>1 // false   pero da false por alguna razon (3>2 = true y true>1 = false porque true es igual a 1)
+[] == ![] // true ( un array vacio cohersiona a stringo vacio que es igual a 0 y el ![] se interpreta como false y 0 y false es igual entonces es true)
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -112,6 +159,14 @@ function test() {
 }
 
 test();
+/*
+undefined
+2
+
+por el hoisting que sube la funcion al principio de su entorno y el undenfined declara la variable al principio del entorno pero no su valor hasta que la linea de codigo llega
+*/
+
+
 ```
 
 Y el de este código? :
@@ -128,6 +183,12 @@ function getFood(food) {
 }
 
 getFood(false);
+
+/*
+
+undefined ya que no tiene valor para retornar ya que snack esta en otro entorno como el del if y
+
+*/
 ```
 
 
@@ -152,6 +213,9 @@ console.log(obj.prop.getFullname());
 var test = obj.prop.getFullname;
 
 console.log(test());
+
+
+// ni idea
 ```
 
 ### Event loop
@@ -167,4 +231,14 @@ function printing() {
 }
 
 printing();
+
+
+
+/* primero va a terminar con la linea de codigo y luego pasa al asincronico segun tiempo programado
+1
+4
+3
+2
+
+*/
 ```
