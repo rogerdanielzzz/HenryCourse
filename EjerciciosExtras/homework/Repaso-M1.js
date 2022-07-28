@@ -16,6 +16,17 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
+    var suma = 0
+
+    for (let i= 0; i<array.length; i++){
+        if(Array.isArray(array[i])){
+            suma+= countArray(array[i])
+        }else{
+            suma+= array[i]
+        }
+    }
+
+    return suma
     
 }
 
@@ -39,7 +50,15 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    let contador = 0
+    arrObje= Object.keys(obj)
+    contador+=arrObje.length
+    for (i=0;i<arrObje.length;i++)  {
+        if (typeof obj[arrObje[i]] === "object"&& !Array.isArray(obj[arrObje[i]]) )  {
+            contador+= countProps(obj[arrObje[i]])
+        }
+    }
+   return contador
 }
 
 
@@ -53,7 +72,17 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
+    let current=this.head
+    var cambios =0
+    while(current){
+        if (Number.isNaN(Number(current.value)) ){
+            current.value= "Kiricocho";  
+            cambios++
+        }
+        current= current.next
+    }
 
+    return cambios
 }
 
 
@@ -67,6 +96,12 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
+    newQueues= new Queue;
+    while(queueOne.size()!==0||queueTwo.size()!==0){
+    if(queueOne.size()!==0)  newQueues.enqueue(queueOne.dequeue())
+    if(queueTwo.size()!==0)  newQueues.enqueue(queueTwo.dequeue())
+    }
+    return newQueues
 
 }
 
@@ -83,13 +118,19 @@ var mergeQueues = function(queueOne, queueTwo) {
 var closureMult = function(multiplier) {
     // Tu código aca:
 
+    return function(x){
+       return x*multiplier
+    }
 }
 
 // Implementar el método sum dentro del prototype de BinarySearchTree
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
-
+let total=this.value;
+if(this.right)  total= total+this.right.sum();
+if(this.left)  total= total+this.left.sum();
+return total
 }
 
 module.exports = {
